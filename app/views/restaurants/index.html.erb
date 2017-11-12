@@ -1,19 +1,26 @@
-<h1>美食餐廳論壇</h1>
-<ul>
-  <%= link_to 'TOP10 Restaurants ', ranking_restaurants_path %> |
-</ul>
-<ul>
-  <%= link_to '達人專頁 ', users_path %>
-</ul>
-<ul>
-    <% @categories.each do |category| %>
-      <span> | </span>
-      <%= link_to category_restaurants_path(category) do %>
-        <%= category.name %>
-      <% end %>
-    <% end %>
-</ul>
+<div class="container">
+  <div class="row">
 
+    <h1>美食論壇</h1>
+
+    <ul class="nav nav-pills">
+      <li role="presentation">
+        <%= link_to 'TOP10 Restaurants', ranking_restaurants_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '達人專頁 ', users_path %>
+      </li>
+      <% @categories.each do |category| %>
+        <li role="presentation">
+          <%= link_to category_restaurants_path(category) do %>
+            <%= category.name %> <!-- 預計加入category.count <span class="badge">42</span> -->
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
 
 
 <!-- 列出所有餐廳 -->
