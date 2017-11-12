@@ -22,13 +22,27 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
 
-<!-- 列出所有餐廳 -->
-<% @restaurants.each do |restaurant| %>
-  <%= image_tag(restaurant.image, :width => 350, :height => 240) %>
-  <h1><%= restaurant.name %></h1>
-  <%= render :partial => 'favorites', :locals => { :restaurant => restaurant } %>
-  <%= restaurant.description %>
-  <%= link_to 'See More...', restaurant_path(restaurant) %>
-<% end %>
-<%= paginate @restaurants %>
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-sm-6 col-md-4">
+        <%= image_tag restaurant.image, style: "height: 200px; width: 100%; display: block;" %>
+        <div class="caption">
+          <h3><%= restaurant.name %></h3>
+          <p><%= restaurant.description %></p>
+          <p>
+            <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary" %>
+            <%= render :partial => 'favorites', :locals => { :restaurant => restaurant } %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+    <div class="clearfix"></div>
+
+    <div class="text-center">
+      <%= paginate @restaurants %>
+    </div>
+
+  </div>
+</div>
