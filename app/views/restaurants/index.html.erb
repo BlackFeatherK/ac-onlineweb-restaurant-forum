@@ -1,23 +1,33 @@
 <div class="container">
   <div class="row">
 
-    <h1>美食論壇</h1>
-
-    <ul class="nav nav-pills">
-      <li role="presentation">
-        <%= link_to 'TOP10 Restaurants', ranking_restaurants_path %>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to '餐廳', root_path %>
       </li>
       <li role="presentation">
-        <%= link_to '達人專頁 ', users_path %>
+        <%= link_to 'TOP10人氣餐廳', ranking_restaurants_path %>
       </li>
-      <% @categories.each do |category| %>
-        <li role="presentation">
-          <%= link_to category_restaurants_path(category) do %>
-            <%= category.name %> <!-- 預計加入category.count <span class="badge">42</span> -->
-          <% end %>
-        </li>
-      <% end %>
+      <li role="presentation">
+        <%= link_to '達人專頁', users_path %>
+      </li>
     </ul>
+
+    <br>
+
+    <div class="text-center">
+      <ul class="nav nav-pills">
+        <% @categories.each do |category| %>
+          <li role="presentation" style="float: none; display: inline-block;">
+            <%= link_to category_restaurants_path(category) do %>
+              <%= category.name %> <!-- 預計加入category.count <span class="badge">42</span> -->
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <br>
 
   </div>
 </div>
@@ -27,7 +37,7 @@
 
     <% @restaurants.each do |restaurant| %>
       <div class="col-sm-6 col-md-4">
-        <%= image_tag restaurant.image, style: "height: 200px; width: 100%; display: block;" %>
+        <%= image_tag restaurant.image, class: "img-responsive center-block" %>
         <div class="caption">
           <h3><%= restaurant.name %></h3>
           <p><%= restaurant.description %></p>
