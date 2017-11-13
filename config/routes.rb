@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     collection do
       get :ranking
     end
-    
+
   end
 
   resources :categories do
