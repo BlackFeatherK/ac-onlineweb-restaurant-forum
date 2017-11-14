@@ -1,20 +1,3 @@
-  <h2>Profile</h2>
-
-   <% if current_user != @user %>
-    <% if current_user.following?(@user) %>
-       <%= button_to 'Unfollow', friendship_path(id: @user.id), :method => :delete %>
-     <% else %>
-        <%= button_to 'Follow', friendships_path(id: @user.id) %>
-     <% end %>
- <% end %>
-
-   <%= image_tag(@user.file_location, :width => 400) %>
-  <h2><%= @user.firstname %> <%= @user.lastname %></h2>
-  <p><%= @user.introself %></p>
-    <% if @user.email == current_user.email %>
-      <%= link_to 'Edit Profile', edit_user_path(@user) %>
-    <% end %>
-
 <h3>自己評論餐廳數：<%= @comments.count %></h3>
   <h3>你曾經留言評論的餐廳</h3>
   <% @comments.each do |comment| %>
@@ -42,3 +25,52 @@
               <%= following.lastname %>
     </h4>
   <% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="page-header">
+
+        <div class="col-md-3 col-sm-4">
+          <%= image_tag(@user.file_location, class: "img-responsive img-rounded") %>
+          <div class="text-center">
+            <% if current_user != @user %>
+              <% if current_user.following?(@user) %>
+                <%= button_to 'Unfollow', friendship_path(id: @user.id), method: :delete, class: "btn btn-default" %>
+              <% else %>
+                <%= button_to 'Follow', friendships_path(id: @user.id), class: "btn btn-default" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-8">
+          <h2>
+            <%= @user.firstname %> <%= @user.lastname %>
+            <% if @user.email == current_user.email %>
+              <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+            <% end %>
+          </h2>
+          <p>
+            <strong><%= @user.email %></strong>
+          </p>
+          <ul class="list-unstyled list-inline">
+            <li><strong><%= @comments.count %></strong> 已評論餐廳</li>
+            <li><strong><%= @favorites.count %></strong> 收藏的餐廳</li>
+            <li><strong><%= @followings.count %></strong> followings</li>
+            <li><strong><%= @followers.count %></strong> followers</li>
+          </ul>
+
+          <div>
+            <%= simple_format @user.introself %>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
