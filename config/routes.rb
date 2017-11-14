@@ -23,9 +23,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :categories do
-     resources :restaurants, :controller => 'category_restaurants'
-  end
+  resources :categories, only: :show
 
   resources :users
 

@@ -6,7 +6,7 @@
       <ol class="breadcrumb">
         <li><%= link_to "Home", root_path %></li>
         <li>
-          <%= link_to @restaurant.category.name, category_restaurants_path(@restaurant.category) %>
+          <%= link_to @restaurant.category.name, category_path(@restaurant.category) %>
         </li>
         <li class="active"><%= @restaurant.name %></li>
       </ol>

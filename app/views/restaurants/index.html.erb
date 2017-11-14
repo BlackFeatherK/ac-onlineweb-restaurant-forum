@@ -27,7 +27,7 @@
       </li>
       <% @categories.each do |category| %>
         <li role="presentation">
-          <%= link_to category_restaurants_path(category) do %>
+          <%= link_to category_path(category) do %>
             <%= category.name %>
           <% end %>
         </li>
