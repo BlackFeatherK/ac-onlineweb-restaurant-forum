@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories do
-    resources :restaurants, :controller => 'category_restaurants'
+    resources :restaurants, :controller => 'category_restaurants', only: :index
   end
 
   resources :users

@@ -5,12 +5,6 @@ class CategoryRestaurantsController < ApplicationController
     @restaurants = @category.restaurants
   end
 
-  def show
-    @restaurant = @category.restaurants.find(params[:id])
-
-    render 'restaurants/show'
-  end
-
   private
 
   def set_category
