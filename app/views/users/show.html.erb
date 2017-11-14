@@ -70,6 +70,96 @@
 
       </div>
 
+      <br>
+
+      <div class="col-md-4">
+
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followings.count %></strong> followings</h3>
+          </div>
+
+          <!-- List group -->
+          <ul class="list-group">
+            <% @followings.each do |following| %>
+              <li class="list-group-item">
+                <%= link_to user_path(following) do %>
+                  <%= image_tag(following.file_location, height: 30, width: 30, class: "img-circle") %>
+                  <%= following.firstname %> <%= following.lastname %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
+          </div>
+
+          <!-- List group -->
+          <ul class="list-group">
+            <% @followers.each do |follower| %>
+              <li class="list-group-item">
+                <%= link_to user_path(follower) do %>
+                  <%= image_tag(follower.file_location, height: 30, width: 30, class: "img-circle") %>
+                  <%= follower.firstname %> <%= follower.lastname %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col-md-8">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong><%= @comments.count %></strong> 已評論餐廳</h3>
+          </div>
+          <div class="panel-body">
+            <% @comments.each do |comment| %>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <%= image_tag comment.restaurant.image, class: "img-responsive center-block" %>
+                </div>
+                <div class="col-md-9">
+                  <strong><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></strong>
+                  <%= simple_format comment.comment %>
+                  <p class="text-muted">
+                    <em><%= time_ago_in_words(comment.created_at) %> ago</em>
+                  </p>
+                </div>
+              </div>
+              <br>
+
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong><%= @favorites.count %></strong> 收藏的餐廳</h3>
+          </div>
+
+          <div class="panel-body">
+            <% @favorites.each do |favorite| %>
+              <div class="col-md-3 col-sm-4 col-xs-6">
+                <%= link_to restaurant_path(favorite.restaurant) do %>
+                  <%= image_tag favorite.restaurant.image, class: "img-responsive center-block" %>
+                  <%= favorite.restaurant.name %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </div>
