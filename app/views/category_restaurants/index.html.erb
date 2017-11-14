@@ -21,20 +21,18 @@
 <div class="container">
   <div class="row">
 
-    <div class="text-center">
-      <ul class="nav nav-pills">
-        <li role="presentation" style="float: none; display: inline-block;">
-          <%= link_to "全部餐廳", root_path %>
+    <ul class="nav nav-pills">
+      <li role="presentation">
+        <%= link_to "全部餐廳", root_path %>
+      </li>
+      <% @categories.each do |category| %>
+        <li role="presentation" class="<%= "active" if category == @category %>">
+          <%= link_to category_restaurants_path(category) do %>
+            <%= category.name %>
+          <% end %>
         </li>
-        <% @categories.each do |category| %>
-          <li role="presentation" style="float: none; display: inline-block;" class="<%= "active" if category == @category %>">
-            <%= link_to category_restaurants_path(category) do %>
-              <%= category.name %> <!-- 預計加入category.count <span class="badge">42</span> -->
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+      <% end %>
+    </ul>
 
     <br>
 
