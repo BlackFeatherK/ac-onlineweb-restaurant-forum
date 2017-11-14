@@ -7,6 +7,8 @@ class CategoryRestaurantsController < ApplicationController
 
   def show
     @restaurant = @category.restaurants.find(params[:id])
+
+    render 'restaurants/show'
   end
 
   private
