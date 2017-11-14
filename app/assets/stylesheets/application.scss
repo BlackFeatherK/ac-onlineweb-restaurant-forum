@@ -8,3 +8,15 @@
   float: none;
   display: inline-block;
 }
+.restaurant-item{
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.restaurant-item .caption{
+  padding: 10px;
+}
+.ranking-item{
+  margin-bottom: 15px;
+}

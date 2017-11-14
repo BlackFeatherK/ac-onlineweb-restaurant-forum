@@ -28,7 +28,7 @@
 
       <% @restaurants.each do |restaurant| %>
 
-        <div class="" style="margin-bottom: 15px;">
+        <div class="ranking-item">
           <div class="col-md-3">
             <%= link_to restaurant_path(restaurant) do %>
               <%= image_tag restaurant.image, class: "img-responsive center-block" %>
