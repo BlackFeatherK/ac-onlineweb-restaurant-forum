@@ -30,6 +30,10 @@ class User < ApplicationRecord
     following.include?(user)
   end
 
+  def is_my_favorite?(restaurant)
+    self.favorites.find_by(:restaurant_id => restaurant.id)
+  end
+
   def admin?
     self.role == "admin"
   end

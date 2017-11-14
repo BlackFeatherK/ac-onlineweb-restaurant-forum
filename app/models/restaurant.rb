@@ -9,8 +9,4 @@ class Restaurant < ApplicationRecord
 
   has_many :favorites, :dependent => :destroy
   has_many :favorited_users, :through => :favorites, :source => :user
-
-	def find_my_favorite(user)
-		self.favorites.find_by(:user_id => user.id)
-  end
 end
