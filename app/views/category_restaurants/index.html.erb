@@ -1,8 +1,58 @@
-<h1><%= @category.name %>列表</h1>
-<% @restaurants.each do |restaurant| %>
-  <%= image_tag(restaurant.image, :width => 250) %>
-  <%= restaurant.name %>
-  <%= link_to 'show', category_restaurant_path(@category, restaurant) %>
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to '餐廳', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'TOP10人氣餐廳', ranking_restaurants_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '達人專頁', users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
 <br>
-<%= link_to 'back to index', root_path %>
+
+<div class="container">
+  <div class="row">
+
+    <div class="text-center">
+      <ul class="nav nav-pills">
+        <li role="presentation" style="float: none; display: inline-block;">
+          <%= link_to "全部餐廳", root_path %>
+        </li>
+        <% @categories.each do |category| %>
+          <li role="presentation" style="float: none; display: inline-block;" class="<%= "active" if category == @category %>">
+            <%= link_to category_restaurants_path(category) do %>
+              <%= category.name %> <!-- 預計加入category.count <span class="badge">42</span> -->
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <br>
+
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-sm-6 col-md-4">
+        <%= link_to restaurant_path(restaurant) do %>
+          <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+        <% end %>
+        <div>
+          <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+          <p><%= truncate(restaurant.description, length: 100) %></p>
+          <div>
+            <%= render :partial => 'restaurants/favorites', :locals => { :restaurant => restaurant } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="clearfix"></div>
+
+  </div>
+</div>

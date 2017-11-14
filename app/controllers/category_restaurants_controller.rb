@@ -3,6 +3,7 @@ class CategoryRestaurantsController < ApplicationController
 
   def index
     @restaurants = @category.restaurants
+    @categories = Category.all
   end
 
   def show
