@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
     redirect_to restaurant_path(@restaurant)
   end
 
-
   private
 
   def comment_params
@@ -36,5 +35,4 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find(params[:id])
   end
-
 end

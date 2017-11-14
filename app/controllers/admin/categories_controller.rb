@@ -19,7 +19,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to admin_categories_path
       flash[:notice] = "category was successfully created"
-      else
+    else
       render :new
       flash[:notice] = "category was failed to create"
     end
@@ -32,7 +32,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to admin_categories_path
       flash[:notice] = "category was successfully updated"
-      else
+    else
       flash[:notice] = "category was failed to update"
       render :edit
     end

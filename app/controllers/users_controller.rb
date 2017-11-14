@@ -30,5 +30,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:firstname, :lastname, :introself, :file_location)
   end
-
 end

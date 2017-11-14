@@ -3,35 +3,24 @@
 <html>
   <head>
     <title>RestaurantForum</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"; integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
-
-    <nav class="navbar navbar-light bg-dark " style="color: white;">
-
-      <p class="notice"><%= notice %></p>
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
- <% if current_user %>
-  <p class="text-left">Hi, <%= current_user.lastname %>
-    <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
-    <%= link_to('修改密碼', edit_registration_path(:user)) %>  |
-    <%= link_to('Profile', user_path(current_user) ) %></p>
-  <% else %>
-    <p class="text-left">
-    <%= link_to('註冊', new_registration_path(:user)) %> |
-    <%= link_to('登入', new_session_path(:user)) %> </p>
- <% end %>
-    </nav>
+    <% if current_user %>
+      Hi, <%= current_user.lastname %>
+      <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
+      <%= link_to('修改密碼', edit_registration_path(:user)) %>  |
+      <%= link_to('Profile', user_path(current_user) ) %></p>
+    <% else %>
+      <%= link_to('註冊', new_registration_path(:user)) %> |
+      <%= link_to('登入', new_session_path(:user)) %> </p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
