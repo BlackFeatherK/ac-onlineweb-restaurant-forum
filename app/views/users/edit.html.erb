@@ -1,18 +1,36 @@
-<h3>Edit Profile</h3>
- <%= form_for @user, :url => user_path(@user)  do |f| %>
+<div class="container">
+  <div class="row">
 
-  <h2>
-    <%= f.label :firstname, "First Name" %>
-    <%= f.text_field :firstname %>
-    <%= f.label :lastname, "Last Name" %>
-    <%= f.text_field :lastname %>
-  </h2>
-    <%= f.label :introself, "自我介紹" %>
-    <%= f.text_area :introself %> <br>
+    <div class="col-md-6 col-md-offset-3">
 
-    <%= f.label :file_location, "大頭照上傳" %>
-    <%= f.file_field :file_location %><br>
+      <h3>Edit Profile</h3>
 
+      <%= form_for @user, :url => user_path(@user) do |f| %>
+        <div class="form-group">
+          <%= f.label :firstname, "First Name" %>
+          <%= f.text_field :firstname, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :lastname, "Last Name" %>
+          <%= f.text_field :lastname, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :introself, "自我介紹" %>
+          <%= f.text_area :introself, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :file_location, "大頭照上傳" %>
+          <%= f.file_field :file_location %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+          <%= link_to "Cancel", user_path(@user), class: "btn btn-default" %>
+        </div>
+      <% end %>
 
-    <%= f.submit "Update" %>
-  <% end %>
+    </div>
+
+  </div>
+</div>
+
+>>>>>>> styled users/edit form
