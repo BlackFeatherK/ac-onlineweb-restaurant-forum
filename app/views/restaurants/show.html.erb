@@ -44,6 +44,7 @@
     <div class="col-md-8 col-md-offset-2">
       <h3>Restaurant Reviews</h3>
 
+      <!-- Restaurant Reviews用media來顯示評論-->
       <% @restaurant.comments.each do |comment| %>
 
         <div class="media">
@@ -70,7 +71,7 @@
 
       <% end %>
 
-      <!-- 這邊要講erb的form搭配bootstrap，就是加form-group在外面和,class: "form-control" -->
+      <!-- 增加評論的form，加form-group在外面和,class: "form-control" -->
       <%= form_for([@restaurant, @restaurant.comments.build]) do |f| %>
         <div class="form-group">
           <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>

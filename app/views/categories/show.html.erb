@@ -1,3 +1,4 @@
+<!-- nav-tabs restaurants/index, category/show, ranking, users/index -->
 <div class="container">
   <div class="row">
 
@@ -25,6 +26,7 @@
       <li role="presentation">
         <%= link_to "全部餐廳", root_path %>
       </li>
+      <!-- 這邊判斷category==@category的時候要加 li.active -->
       <% @categories.each do |category| %>
         <li role="presentation" class="<%= "active" if category == @category %>">
           <%= link_to category_path(category) do %>
@@ -36,6 +38,7 @@
 
     <br>
 
+    <!-- 跟restaurants/index一樣，有多寫restaurant-item的class style -->
     <% @restaurants.each do |restaurant| %>
       <div class="col-sm-6 col-md-4">
         <div class="restaurant-item">
@@ -46,6 +49,7 @@
             <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
             <p><%= truncate(restaurant.description, length: 100) %></p>
             <div class="text-right">
+              <!-- 這邊要補加'restaurants/favorites'不然會炸掉，或是兩邊(restaurants/index, categoires/show)都用詳細路徑的方式requie partial -->
               <%= render :partial => 'restaurants/favorites', :locals => { :restaurant => restaurant } %>
             </div>
           </div>

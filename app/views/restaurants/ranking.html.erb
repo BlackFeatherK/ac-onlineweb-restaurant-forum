@@ -1,3 +1,4 @@
+<!-- nav-tabs restaurants/index, category/show, ranking, users/index -->
 <div class="container">
   <div class="row">
 
@@ -26,6 +27,7 @@
         <h1>Top 10 人氣餐廳 <small>(收藏數最高)</small></h1>
       </div>
 
+      <!-- 有多寫ranking-item的class style-->
       <% @restaurants.each do |restaurant| %>
 
         <div class="ranking-item">
@@ -37,6 +39,7 @@
           <div class="col-md-9">
             <h4>
               <%= restaurant.name %>
+              <!-- 用label label-info顯示收藏數 -->
               <span class="label label-info">收藏數：<%= restaurant.favorites.count %></span>
             </h4>
             <p><%= truncate(restaurant.description, length: 200) %></p>

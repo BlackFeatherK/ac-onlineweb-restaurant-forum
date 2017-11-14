@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
 
+      <!-- page-header 裡面顯示個人檔案資料 -->
       <div class="page-header">
 
         <div class="col-md-3 col-sm-4">
@@ -27,6 +28,7 @@
           <p>
             <strong><%= @user.email %></strong>
           </p>
+          <!-- inline & unstyled 的 list -->
           <ul class="list-unstyled list-inline">
             <li><strong><%= @comments.count %></strong> 已評論餐廳</li>
             <li><strong><%= @favorites.count %></strong> 收藏的餐廳</li>
@@ -45,14 +47,12 @@
       <br>
 
       <div class="col-md-4">
-
+        <!-- 顯示followings的清單，panel包一個list-group  -->
         <div class="panel panel-default">
-          <!-- Default panel contents -->
           <div class="panel-heading">
             <h3 class="panel-title"><%= @followings.count %></strong> followings</h3>
           </div>
 
-          <!-- List group -->
           <ul class="list-group">
             <% @followings.each do |following| %>
               <li class="list-group-item">
@@ -65,13 +65,12 @@
           </ul>
         </div>
 
+        <!-- 顯示followers的清單，panel包一個list-group  -->
         <div class="panel panel-default">
-          <!-- Default panel contents -->
           <div class="panel-heading">
             <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
           </div>
 
-          <!-- List group -->
           <ul class="list-group">
             <% @followers.each do |follower| %>
               <li class="list-group-item">
@@ -87,7 +86,7 @@
       </div>
 
       <div class="col-md-8">
-
+        <!-- 顯示已評論餐廳的清單，panel包一個panel-body裡面使用row>col的layouts來顯示評論 -->
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><strong><%= @comments.count %></strong> 已評論餐廳</h3>
@@ -113,8 +112,8 @@
           </div>
         </div>
 
+        <!-- 顯示收藏的餐廳的清單，panel包一個panel-body裡面簡單顯示餐廳圖片和name -->
         <div class="panel panel-default">
-          <!-- Default panel contents -->
           <div class="panel-heading">
             <h3 class="panel-title"><strong><%= @favorites.count %></strong> 收藏的餐廳</h3>
           </div>
