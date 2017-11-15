@@ -13,7 +13,7 @@
     <h4><%= comment.comment %></h4>
     <%= comment.user.email %><br>
     <%= time_ago_in_words(comment.created_at) %> <br>
-    <% if comment.user.email == current_user.email %>
+    <% if comment.user == current_user %>
       <%= link_to 'Edit comment', edit_restaurant_comment_path( @restaurant, comment.id ) %><br>
       <%= link_to 'Destroy comment', restaurant_comment_path( @restaurant, comment.id ), :method => :delete, :data => { confirm:"Are you sure?"} %><br>
     <% end %>
