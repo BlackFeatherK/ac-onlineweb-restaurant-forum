@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
   before_action :set_comment, :only => [:edit, :update, :destroy]
 
   def create
-    @comment = @restaurant.comments.create(comment_params)
-    @comment.user_id = current_user.id
+    @comment = @restaurant.comments.build(comment_params)
+    @comment.user = current_user
     @comment.save!
     redirect_to restaurant_path(@restaurant)
   end
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params[:comment].permit(:restaurant_id, :user_id, :comment_id, :comment)
+    params.require(:comment).permit(:restaurant_id, :user_id, :comment_id, :comment)
   end
 
   def set_restaurant
