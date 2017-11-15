@@ -8,17 +8,17 @@
   <% end %>
 <% end %>
 
-  <%= image_tag(@user.file_location, :width => 400) %>
-  <h2>
-  <%= @user.firstname %>
-  <%= @user.lastname %>
-  </h2>
+<%= image_tag(@user.file_location, :width => 400) %>
+<h2>
+<%= @user.firstname %>
+<%= @user.lastname %>
+</h2>
 
-  <p><%= @user.introself %></p>
+<p><%= @user.introself %></p>
 
-  <% if @user == current_user %>
-    <%= link_to 'Edit Profile', edit_user_path(@user) %>
-  <% end %>
+<% if @user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_path(@user) %>
+<% end %>
 
 <h3>自己評論餐廳數：<%= @comments.count %></h3>
 <h3>你曾經留言評論的餐廳</h3>
